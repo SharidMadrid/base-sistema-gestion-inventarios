@@ -1,25 +1,7 @@
-import { useSession, signIn } from "next-auth/react";
-import { useEffect, useState } from "react";
-
+import RouterPrivado from '@/components/RouterPrivado';
 import { Titulo } from '@/components/general/titulo';
 
 const GestionDeInventario: React.FC = () => {
-  const { status } = useSession();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (status === "authenticated") {
-      setLoading(false);
-      window.open("/inventory", "_self");
-    } else if (status === "unauthenticated") {
-      setLoading(false);
-    }
-  }, [status]);
-
-  const handleSignIn = async () => {
-    await signIn("auth0");
-  };
-
   
   return (
     <main className="h-screen w-full flex items-center justify-center font-serif"
